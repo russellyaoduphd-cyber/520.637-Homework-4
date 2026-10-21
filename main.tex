@@ -15,10 +15,55 @@
 
 \section{}
 \subsection*{a}
-\[\lvert q^{\pi}(s,a) \lvert = \lvert \mathbb{E}[\sum_t \gamma^{t} R_{t+1} |S_t=s, A_t=a] \lvert\ \leq \mathbb{E}[r_{max} \sum_{t} \gamma^{t} |S_t=s, A_t=a] = \frac{1}{1-\gamma} r_{max} \quad \forall s, a\] 
-Thus, $\|q\|_{\infty} \leq \frac{1}{1-\gamma} r_{max}$
+For any policy $\pi$ and any $(s,a)$, by the definition of the action-value function and $|R_{t+1}|\leq r_{\max}$,
+\[
+\begin{aligned}
+|q^\pi(s,a)|
+&=\left|\mathbb{E}_\pi\left[\sum_{t=0}^{\infty}\gamma^t R_{t+1}\mid S_0=s,A_0=a\right]\right|\\
+&\leq\mathbb{E}_\pi\left[\sum_{t=0}^{\infty}\gamma^t |R_{t+1}|\mid S_0=s,A_0=a\right]\\
+&\leq r_{\max}\sum_{t=0}^{\infty}\gamma^t
+=\frac{r_{\max}}{1-\gamma}.
+\end{aligned}
+\]
+Thus,
+\[
+\|q^\pi\|_\infty=\max_{s,a}|q^\pi(s,a)|\leq\frac{r_{\max}}{1-\gamma}.
+\]
+
 \subsection*{b}
-\[v^{\star}(s)-v^{\pi_q}(s) = q^{\star}(s, \pi^{\star}(s)) - q(s, \pi_q(s))
-=q^{\star}(s, \pi^{\star}(s)) - q^{\star}(s, \pi_q(s))+q^{\star}(s,\pi_q(s))-
-q(s,\pi_q(s))\]
+Since $v^\star(s)=q^\star(s,\pi^\star(s))$, we have
+\[
+\begin{aligned}
+v^\star(s)-v^{\pi_q}(s)
+&=q^\star(s,\pi^\star(s))-v^{\pi_q}(s)\\
+&=q^\star(s,\pi^\star(s))-q^\star(s,\pi_q(s))
+ +q^\star(s,\pi_q(s))-v^{\pi_q}(s).
+\end{aligned}
+\]
+By the Bellman equations,
+\[
+\begin{aligned}
+q^\star(s,\pi_q(s))
+&=r(s,\pi_q(s))+\gamma\sum_{s'}p(s'|s,\pi_q(s))v^\star(s'),\\
+v^{\pi_q}(s)
+&=r(s,\pi_q(s))+\gamma\sum_{s'}p(s'|s,\pi_q(s))v^{\pi_q}(s').
+\end{aligned}
+\]
+Subtracting these two equations gives
+\[
+q^\star(s,\pi_q(s))-v^{\pi_q}(s)
+=\gamma\sum_{s'}p(s'|s,\pi_q(s))
+\bigl[v^\star(s')-v^{\pi_q}(s')\bigr].
+\]
+Therefore,
+\[
+\boxed{
+\begin{aligned}
+v^\star(s)-v^{\pi_q}(s)
+&=q^\star(s,\pi^\star(s))-q^\star(s,\pi_q(s))\\
+&\quad+\gamma\sum_{s'}p(s'|s,\pi_q(s))
+\bigl[v^\star(s')-v^{\pi_q}(s')\bigr].
+\end{aligned}}
+\]
+
 \end{document}
