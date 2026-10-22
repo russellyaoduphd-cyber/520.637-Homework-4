@@ -87,4 +87,42 @@ v^\star(s)-v^{\pi_q}(s)
 \leq 2\|q-q^\star\|_\infty+\gamma\|v^{\pi_q}-v^\star\|_\infty.
 \]
 
+\noindent (iii) By optimality of $v^\star$, $v^\star(s)-v^{\pi_q}(s)\geq 0$ for every $s$.
+Taking the maximum over $s$ in part (ii),
+\[
+\|v^\star-v^{\pi_q}\|_\infty
+\leq 2\|q-q^\star\|_\infty+\gamma\|v^\star-v^{\pi_q}\|_\infty.
+\]
+Rearranging gives
+\[
+\|v^\star-v^{\pi_q}\|_\infty
+\leq \frac{2\|q-q^\star\|_\infty}{1-\gamma}.
+\]
+
+\subsection*{c}
+Since $T_{\max}^q$ is a $\gamma$-contraction and $T_{\max}^q q^\star=q^\star$,
+\[
+\begin{aligned}
+\|q^{(k)}-q^\star\|_\infty
+&\leq \gamma^k\|q^{(0)}-q^\star\|_\infty\\
+&=\gamma^k\|q^\star\|_\infty
+\leq \frac{\gamma^k r_{\max}}{1-\gamma},
+\end{aligned}
+\]
+where the last inequality follows from part (a). By part (b)(iii),
+\[
+\|v^{\pi_{q^{(k)}}}-v^\star\|_\infty
+\leq \frac{2}{1-\gamma}\|q^{(k)}-q^\star\|_\infty
+\leq \frac{2r_{\max}\gamma^k}{(1-\gamma)^2}.
+\]
+If
+\[
+k\geq \left(\log\frac{1}{\gamma}\right)^{-1}
+\log\frac{2r_{\max}}{(1-\gamma)^2\epsilon},
+\]
+then $\gamma^k\leq \frac{(1-\gamma)^2\epsilon}{2r_{\max}}$, and hence
+\[
+\|v^{\pi_{q^{(k)}}}-v^\star\|_\infty\leq\epsilon.
+\]
+
 \end{document}
