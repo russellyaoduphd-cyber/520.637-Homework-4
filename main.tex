@@ -31,7 +31,7 @@ Thus,
 \]
 
 \subsection*{b}
-Since $v^\star(s)=q^\star(s,\pi^\star(s))$, we have
+\noindent (i) Since $v^\star(s)=q^\star(s,\pi^\star(s))$, we have
 \[
 \begin{aligned}
 v^\star(s)-v^{\pi_q}(s)
@@ -57,13 +57,34 @@ q^\star(s,\pi_q(s))-v^{\pi_q}(s)
 \]
 Therefore,
 \[
-\boxed{
 \begin{aligned}
 v^\star(s)-v^{\pi_q}(s)
 &=q^\star(s,\pi^\star(s))-q^\star(s,\pi_q(s))\\
 &\quad+\gamma\sum_{s'}p(s'|s,\pi_q(s))
 \bigl[v^\star(s')-v^{\pi_q}(s')\bigr].
-\end{aligned}}
+\end{aligned}
+\]
+
+\noindent (ii) Since $\pi_q$ is greedy with respect to $q$,
+$q(s,\pi^\star(s))\leq q(s,\pi_q(s))$. Thus,
+\[
+\begin{aligned}
+&q^\star(s,\pi^\star(s))-q^\star(s,\pi_q(s))\\
+&\leq q^\star(s,\pi^\star(s))-q(s,\pi^\star(s))
++q(s,\pi_q(s))-q^\star(s,\pi_q(s))\\
+&\leq 2\|q-q^\star\|_\infty.
+\end{aligned}
+\]
+Moreover, since the transition probabilities sum to one,
+\[
+\sum_{s'}p(s'|s,\pi_q(s))
+\bigl[v^\star(s')-v^{\pi_q}(s')\bigr]
+\leq \|v^{\pi_q}-v^\star\|_\infty.
+\]
+Combining these inequalities with part (i), for every $s\in S$,
+\[
+v^\star(s)-v^{\pi_q}(s)
+\leq 2\|q-q^\star\|_\infty+\gamma\|v^{\pi_q}-v^\star\|_\infty.
 \]
 
 \end{document}
