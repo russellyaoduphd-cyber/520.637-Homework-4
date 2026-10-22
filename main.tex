@@ -125,4 +125,53 @@ then $\gamma^k\leq \frac{(1-\gamma)^2\epsilon}{2r_{\max}}$, and hence
 \|v^{\pi_{q^{(k)}}}-v^\star\|_\infty\leq\epsilon.
 \]
 
+\section{}
+\subsection*{a}
+Since $\hat p(s'|s,a)=p(s'|s,a)$, for any value function $v$ and any $s$,
+\[
+\begin{aligned}
+|(T_{\max}v)(s)-(\hat T_{\max}v)(s)|
+&\leq \max_a |r(s,a)-\hat r(s,a)|\\
+&\leq \epsilon.
+\end{aligned}
+\]
+Hence, $\|T_{\max}v-\hat T_{\max}v\|_\infty\leq\epsilon$.
+Using $v^\star=T_{\max}v^\star$ and
+$\hat v^\star=\hat T_{\max}\hat v^\star$, we have
+\[
+\begin{aligned}
+\|v^\star-\hat v^\star\|_\infty
+&=\|T_{\max}v^\star-\hat T_{\max}\hat v^\star\|_\infty\\
+&\leq \|T_{\max}v^\star-\hat T_{\max}v^\star\|_\infty
++\|\hat T_{\max}v^\star-\hat T_{\max}\hat v^\star\|_\infty\\
+&\leq \epsilon+\gamma\|v^\star-\hat v^\star\|_\infty,
+\end{aligned}
+\]
+where the last step uses the $\gamma$-contraction of $\hat T_{\max}$.
+Thus,
+\[
+\|v^\star-\hat v^\star\|_\infty\leq\frac{\epsilon}{1-\gamma}.
+\]
+
+\subsection*{b}
+Let $c=\epsilon/(1-\gamma)$. Since
+$\hat r(s,a)=r(s,a)+\epsilon$, for every $s$,
+\[
+\begin{aligned}
+(\hat T_{\max}(v^\star+c))(s)
+&=\max_a\left\{r(s,a)+\epsilon
++\gamma\sum_{s'}p(s'|s,a)(v^\star(s')+c)\right\}\\
+&=(T_{\max}v^\star)(s)+\epsilon+\gamma c\\
+&=v^\star(s)+c,
+\end{aligned}
+\]
+where we used $\sum_{s'}p(s'|s,a)=1$ and
+$\epsilon+\gamma c=c$.
+Therefore, $v^\star+c$ is a fixed point of $\hat T_{\max}$.
+Since $\hat T_{\max}$ has a unique fixed point $\hat v^\star$,
+\[
+\hat v^\star(s)=v^\star(s)+\frac{\epsilon}{1-\gamma},
+\qquad \forall s\in S.
+\]
+
 \end{document}
